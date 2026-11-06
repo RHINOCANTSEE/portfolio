@@ -1,5 +1,4 @@
-﻿import React from 'react';
-import { Activity, Crosshair, Terminal, Zap, ShieldCheck } from 'lucide-react';
+﻿import { Activity, Crosshair, Terminal, Zap, ShieldCheck } from 'lucide-react';
 import { portfolioData } from './data/portfolioData';
 
 export default function App() {
@@ -49,7 +48,7 @@ export default function App() {
             [ ACTIVE_FRANCHISES ]
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm font-bold text-slate-300 uppercase tracking-wider">
-            {portfolioData.ticker.franchises.map(f => (
+            {portfolioData.ticker.franchises.map((f: string) => (
               <span key={f} className="flex items-center gap-2">
                 <Crosshair size={12} className="text-cyan-500/50" /> {f}
               </span>
@@ -62,7 +61,7 @@ export default function App() {
             <ShieldCheck size={16} className="text-cyan-400" /> Operational Impact Matrix
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {portfolioData.impactMatrix.map((item, idx) => (
+            {portfolioData.impactMatrix.map((item: { metric: string; label: string; context: string; tag: string }, idx: number) => (
               <div key={idx} className="bg-[#0D1017] border border-[#1A1F2E] p-8 relative group hover:border-cyan-500/30 transition-colors">
                 <div className="absolute top-4 right-4 font-mono text-[10px] text-emerald-400 bg-emerald-400/10 px-2 py-1 border border-emerald-400/20">
                   {item.tag}
@@ -80,7 +79,7 @@ export default function App() {
             <Zap size={16} className="text-amber-500" /> Strategic Execution Sequence
           </h3>
           <div className="space-y-4">
-            {portfolioData.roadmap.map((step) => (
+            {portfolioData.roadmap.map((step: { id: string; title: string; desc: string }) => (
               <div key={step.id} className="flex flex-col md:flex-row gap-6 bg-[#0A0C11] border border-[#1A1F2E] p-6 items-start">
                 <div className="font-mono text-2xl text-slate-600 font-black">{step.id.replace('PHASE_', '')}</div>
                 <div>
@@ -95,7 +94,7 @@ export default function App() {
         <section className="mb-24">
           <h3 className="font-mono text-xs text-slate-500 uppercase mb-8">[ BATTLE-TESTED DEPLOYMENTS ]</h3>
           <div className="grid grid-cols-1 gap-8">
-            {portfolioData.caseStudies.map((cs) => (
+            {portfolioData.caseStudies.map((cs: { id: string; title: string; problem: string; execution: string; result: string }) => (
               <article key={cs.id} className="border border-[#1A1F2E] bg-[#0D1017]">
                 <div className="border-b border-[#1A1F2E] px-6 py-3 font-mono text-xs text-cyan-400 flex justify-between bg-[#0A0C11]">
                   <span>FILE: {cs.id}</span>
